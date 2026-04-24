@@ -1,36 +1,191 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4f4f4;
+:root {
+    --vintage-paper: #f4e1d2;
+    --dark-brown: #5d4037;
+    --accent-orange: #bc6c25;
+    --text-color: #3e2723;
 }
 
-.container {
-  width: 80%;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: var(--vintage-paper);
+    color: var(--text-color);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+}
+
+/* Film Grain Effect */
+.grain {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 999;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--dark-brown);
+    color: var(--vintage-paper);
+    border-bottom: 5px double var(--vintage-paper);
+}
+
+.logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span { color: var(--accent-orange); }
+
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 20px; }
+nav ul li a {
+    color: var(--vintage-paper);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+nav ul li a:hover { color: var(--accent-orange); }
 
 header {
-  text-align: center;
-  border-bottom: 2px solid #333;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border-bottom: 10px solid var(--dark-brown);
 }
 
-h1 {
-  margin: 0;
+.hero-content h1 {
+    font-family: 'Special Elite', cursive;
+    font-size: 4rem;
+    margin-bottom: 10px;
 }
 
-section {
-  margin-top: 20px;
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: var(--dark-brown);
+    color: var(--vintage-paper);
+    text-decoration: none;
+    border: 3px solid var(--text-color);
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-h2 {
-  color: #333;
+.btn:hover {
+    background: var(--accent-orange);
+    transform: scale(1.1);
 }
 
-ul {
-  list-style-type: square;
+/* Cowboy Animation */
+.cowboy-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    height: 150px;
 }
 
+.cowboy {
+    font-size: 80px;
+    position: absolute;
+    left: -100px;
+    animation: walk 15s linear infinite;
+}
+
+.ground {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 5px;
+    background: var(--dark-brown);
+}
+
+@keyframes walk {
+    0% { left: -100px; transform: scaleX(1); }
+    45% { left: 110%; transform: scaleX(1); }
+    50% { left: 110%; transform: scaleX(-1); }
+    95% { left: -100px; transform: scaleX(-1); }
+    100% { left: -100px; transform: scaleX(1); }
+}
+
+/* Sections */
+.section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.section h2 {
+    font-family: 'Special Elite', cursive;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-decoration: underline;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border: 2px dashed var(--dark-brown);
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    background: var(--dark-brown);
+    color: var(--vintage-paper);
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    background: var(--accent-orange);
+    transform: rotate(-5deg);
+}
+
+.certs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cert-card {
+    background: white;
+    padding: 20px;
+    border: 10px solid #ddd;
+    border-image: url('https://www.transparenttextures.com/patterns/paper.png') 30 round;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+footer {
+    background: var(--dark-brown);
+    color: var(--vintage-paper);
+    text-align: center;
+    padding: 20px;
+}

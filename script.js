@@ -1,15 +1,30 @@
-const skills = [
-  "Java",
-  "C",
-  "C++",
-  "Python",
-  "Data Structures"
-];
+const text = "Greetings, I'm Devesh Bansal";
+let index = 0;
+const speed = 100; 
+const target = document.getElementById("typewriter");
 
-const skillsList = document.getElementById("skills-list");
+// Clear the initial text
+target.innerHTML = "";
 
-skills.forEach(skill => {
-  const li = document.createElement("li");
-  li.textContent = skill;
-  skillsList.appendChild(li);
+function typeWriter() {
+    if (index < text.length) {
+        target.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+// Initialize animation on load
+window.onload = () => {
+    typeWriter();
+};
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
